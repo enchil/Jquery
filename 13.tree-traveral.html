@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <ul class="level-1">
         <li class="item-1">item-1</li>
@@ -20,7 +21,7 @@
                         <li class="item-002">item-002</li>
                         <li class="item-003">item-003</li>
                     </ul>
-                    
+
                 </li>
                 <li class="item-03">item-03</li>
             </ul>
@@ -28,5 +29,29 @@
         </li>
         <li class="item-3">item-3</li>
     </ul>
+
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+        <script>
+            //從上往下找
+        //    $('.level-1').children().css('outline','green solid 1px');
+        //    $('.level-2').children().css('outline','blue solid 1px');
+        //    $('.level-2').find('.level-3').css('outline','purple solid 3px');
+        //    $('.level-3').children().css('outline','pink solid 3px');
+        //    $('.level-2').find('.item-002').css('outline','red solid 5px');
+
+            //從下往上找
+            // $('.item-002').parents().css('outline','green solid 1px');
+            // $('.item-002').parentsUntil('.level-1').css('outline','blue solid 1px');
+            // $('.item-002').closest('.level-2').css('outline','purple solid 3px');
+            // $('.item-002').parent().css('outline','pink solid 3px');
+            // $('.item-002').closest('li').css('outline','red solid 3px');
+
+            //找旁邊
+            $('.item-001').next().next().css('outline','yellow solid 3px');
+            $('.item-001').parent().parent().prev().css('outline','orange solid 3px');
+            $('.item-001').parent().parent().next().css('outline','hotpink solid 3px');
+
+        </script>
 </body>
 </html>
