@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+
+<body>
+
+
+
+    <div class="wrap">
+        <div class="box">box01</div>
+        <div class="box">box02</div>
+        <div class="box">box03</div>
+        <div class="box">box04</div>
+        <div class="box">box05</div>
+        <div class="box">box06</div>
+        <div class="box">box07</div>
+        <div class="box">box08</div>
+        <div class="box">box09</div>
+        <div class="box">box10</div>
+        <div class="box">box11</div>
+        <div class="box">box12</div>
+    </div>
+    <br><br><br>
+    <div class="wrap">
+        <span>span</span>
+        <div class="box">box01</div>
+        <div class="box">box02</div>
+        <div class="box">box03</div>
+        <div class="box">box04</div>
+        <div class="box">box05</div>
+        <div class="box">box06</div>
+        <div class="box">box07</div>
+        <div class="box">box08</div>
+        <div class="box">box09</div>
+        <div class="box">box10</div>
+        <div class="box">box11</div>
+        <div class="box">box12</div>
+    </div>
+    
+    <div class="wrap">
+        <span>span1</span>
+        <span>span2</span>
+        <span>span3</span>
+        <div class="box"></div>
+    </div>
+
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+    <script>
+        $('.box:first-child').css('background', 'green')
+        $('.box:last-child').css('background', 'yellow')
+        $('.box:nth-child(7)').css('background', 'pink')
+        $('.box:nth-of-type(9)').css('background', 'lightblue')
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
