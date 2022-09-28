@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img class="pic1" src="./imgs/camp10.jpg" alt="">
+    <img class="pic2" src="" alt="">
+    <script src="./js/jquery-3.6.1.min.js"></script>
+    <script>
+        
+        $('.pic1').attr('src')
+        console.log($('.pic1').attr('src'));
+
+        $('.pic1').attr('src', './imgs/camp2.jpg')
+        console.log($('.pic1').attr('src'));
+
+        $('.pic2').attr('src', $('.pic1').attr('src'))
+        console.log($('.pic2').attr('src'));
+
+    </script>
+</body>
+
+</html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
 </head>
 
 <body>
+    <h1 id="result"></h1>
     <ul class="level-1">
         <li class="item-1">item-1</li>
         <li class="item-2">item-2
@@ -32,26 +34,56 @@
 
 
     <script src="./js/jquery-3.6.1.min.js"></script>
-        <script>
-            //從上往下找
+    <script>
+        //---從上往下找
         //    $('.level-1').children().css('outline','green solid 1px');
         //    $('.level-2').children().css('outline','blue solid 1px');
         //    $('.level-2').find('.level-3').css('outline','purple solid 3px');
         //    $('.level-3').children().css('outline','pink solid 3px');
         //    $('.level-2').find('.item-002').css('outline','red solid 5px');
 
-            //從下往上找
-            // $('.item-002').parents().css('outline','green solid 1px');
-            // $('.item-002').parentsUntil('.level-1').css('outline','blue solid 1px');
-            // $('.item-002').closest('.level-2').css('outline','purple solid 3px');
-            // $('.item-002').parent().css('outline','pink solid 3px');
-            // $('.item-002').closest('li').css('outline','red solid 3px');
+        //---從下往上找
+        // $('.item-002').parents().css('outline','green solid 1px');
+        // $('.item-002').parentsUntil('.level-1').css('outline','blue solid 1px');
+        // $('.item-002').closest('.level-2').css('outline','purple solid 3px');
+        // $('.item-002').parent().css('outline','pink solid 3px');
+        // $('.item-002').closest('li').css('outline','red solid 3px');
 
-            //找旁邊
-            $('.item-001').next().next().css('outline','yellow solid 3px');
-            $('.item-001').parent().parent().prev().css('outline','orange solid 3px');
-            $('.item-001').parent().parent().next().css('outline','hotpink solid 3px');
+        //---找旁邊
+        // $('.item-001').next().next().css('outline','yellow solid 3px');
+        // $('.item-001').parent().parent().prev().css('outline','orange solid 3px');
+        // $('.item-001').parent().parent().next().css('outline','hotpink solid 3px');
 
-        </script>
+
+
+        //---取出裡面的值 跟js的foreach一樣
+        // $('li').each((index,item)=>{
+        //     console.log('item text:',$(item).text())
+        //     console.log('index:',$(index))
+
+        // })
+
+
+
+        //---取出裡面的值 綁事件
+        const lis = document.querySelectorAll('li');
+
+        lis.forEach(function (element){
+            element.addEventListener('click', function (e) {
+                e.stopPropagation();
+                console.log(element);
+            }
+            )
+        })
+
+        $('li').click(function (e) {
+                e.stopPropagation();
+                console.log('lis', $(e.currentTarget).text());
+            })
+
+
+
+    </script>
 </body>
+
 </html>
