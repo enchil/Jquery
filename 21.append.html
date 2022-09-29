@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+
     <div class="container">
         <div class="row">
+            <button class="addf">新增後面</button>
+            <button class="addb">新增前面</button>
+
             <ul>
                 <li>item 1</li>
                 <li>item 2</li>
@@ -19,14 +24,31 @@
     </div>
 
     <script src="./js/jquery-3.6.1.min.js"></script>
-        <script>
-           $("ul").append("<li>item 3</li>");// 從ul加裡面的子層的最後一個位子
-           $("ul").append("<li>item 4</li>");
-           $("ul").prepend("<li>item -1</li>");// 從ul加裡面的子層的第一個位子
-           $("ul").prepend("<li>item -2</li>");
+    <script>
+        //    $("ul").append("<li>item 3</li>");// 從ul加裡面的子層的最後一個位子
+        //    $("ul").append("<li>item 4</li>");
+        //    $("ul").prepend("<li>item -1</li>");// 從ul加裡面的子層的第一個位子
+        //    $("ul").prepend("<li>item -2</li>");
 
 
+        //item數字加1
+        let x = 2;
+        $(".addf").click(function () {
+            console.log('click');
+            x = x + 1;
+            $("ul").append("<li>item " + x + " </li>");
 
-        </script>
+        })
+
+        //item數字減1
+        let y = 1;
+        $(".addb").click(function () {
+            y = y - 1;
+            $("ul").prepend("<li>item " + y + " </li>");
+        })
+
+
+    </script>
 </body>
+
 </html>

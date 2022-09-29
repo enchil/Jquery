@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap{
+            width: 700px;
+            height: 700px;background-color: #aaa;
+        }
+        .box1{
+            width: 400px;
+            height: 400px;background-color: #a5a;
+        }
+        .box2{
+            width: 200px;
+            height: 200px;background-color:lightcoral;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="box1">
+            <div class="box2"></div>
+        </div>
+    </div>
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+        <script>
+           $('.box2').click(function(e){
+            // e.stopPropagation();
+            console.log('box2 clicked');
+            console.log('box2 this',this);
+            //wrap還是會被點到
+           })
+
+           $('.wrap').click(function(){
+            console.log('wrap clicked');
+            console.log('wrap this',this);
+            // this就是currentTarget
+           })
+        </script>
+</body>
+</html>
