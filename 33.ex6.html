@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap {
+            width: 700px;
+            height: 480px;
+            overflow: hidden;
+        }
+
+        .train {
+            list-style: none;
+            padding-left: 0em;
+            display: flex;
+            width: 500%;
+            transform: translateX(0px);
+            transition: .5s;
+        }
+
+        .train li img {
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 50px;
+            left: -480px;
+            right: 0;
+            padding-left: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        .slider-dots li {
+            width: 40px;
+            height: 10px;
+            border: 1px solid #fff;
+            margin: 0 4px;
+        }
+
+        .slider-dots li:nth-child(1) {
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <ul class="train">
+            <li><img src="./imgs/camp2.jpg" alt=""></li>
+            <li><img src="./imgs/camp3.jpg" alt=""></li>
+            <li><img src="./imgs/camp4.jpg" alt=""></li>
+            <li><img src="./imgs/camp5.jpg" alt=""></li>
+            <li><img src="./imgs/camp6.jpg" alt=""></li>
+        </ul>
+    </div>
+
+    <ul class="slider-dots">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+    <script>
+        let x = -700;
+        $('.train').click(function () {
+            x = x - 700;
+            if (x <= -3500) {
+                x = 0;
+            }
+            $('.train').css('transform', "translateX(" + x + "px)")
+
+        })
+
+        $('.slider-dots li').hover(function () {
+            if ($(this).index()) {
+                let pp = $(this).index();
+                pp = x * pp;
+                $('.train').css('transform', `translateX(${pp}px)`);
+            } else {
+                $('.train').css('transform', "translateX(0px)");
+            }
+            $('.slider-dots li').css('background-color', '#ffffff00');
+            $(this).css('background-color', '#fff');
+
+        })
+
+
+
+    </script>
+</body>
+
+</html>

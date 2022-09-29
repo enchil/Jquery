@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            height: 400px;
+            width: 400px;
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+        <script>
+           $('.box').click(function(){
+            console.log('click')
+           })
+
+           $('.box').dblclick(function(){
+            console.log('dblclick')
+           })
+
+           $('.box').contextmenu(function(){
+            console.log('contextmenu')//右鍵
+           })
+
+           $('.box').mousedown(function(){
+            console.log('mousedown')//滑鼠按下去
+           })
+
+           $('.box').mouseup(function(){
+            console.log('mouseup')//滑鼠放掉
+           })
+
+           $('.box').mouseenter(function(){
+            console.log('mouseenter')//滑鼠移到物件
+           })
+
+           $('.box').mouseout(function(){
+            console.log('mouseout')//滑鼠移出物件
+           })
+
+           $('.box').hover(function(){
+            console.log('hover')//滑鼠移出移近物件
+           })
+        </script>
+</body>
+</html>
