@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form action="">
+        <label for="city">City</label>
+        <select name="city" id="city">
+            <option value="0">基隆</option>
+            <option value="1">台北</option>
+            <option value="2">新北</option>
+        </select>
+        <label for="district">District</label>
+        <select name="district" id="district">
+            <option value="0">a</option>
+            <option value="1">aa</option>
+            <option value="2">aaa</option>
+
+        </select>
+
+    </form>
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+    <script>
+        let districtArray = [
+            ['七堵', '中正', '暖暖'],
+            ['中正', '大安', '信義'],
+            ['蘆洲', '三重', '新店'],
+        ];
+
+
+        //1.先知道被選的是哪個city
+        $('#city').change(function () {
+            // console.log('city change:', $(this).val());
+            $('#district').empty();
+
+            for (let i = 0; i < districtArray[$(this).val()].length; i++) {
+                $('#district').append(`<option value="${i}">${districtArray[$(this).val()][i]}</option>`);
+            }
+
+        })
+
+    </script>
+</body>
+
+</html>
