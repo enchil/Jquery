@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section{
+            height: 50vh;
+            width: 200vw;
+            font-size: 10rem;
+        }
+    </style>
+</head>
+<body>
+    <section class="autobg">1</section>
+    <section class="autobg">2</section>
+    <section class="autobg">3</section>
+    <section class="autobg">4</section>
+    <section class="autobg">5</section>
+    <section class="autobg">6</section>
+    <section class="autobg">7</section>
+    <section class="autobg">8</section>
+    <section class="autobg">9</section>
+    <section class="autobg">10</section>
+    <section class="autobg">11</section>
+    <section class="autobg">12</section>
+
+    
+    <script src="./js/jquery-3.6.1.min.js"></script>
+        
+        <script>
+         function getRandomInt(max) {
+            return Math.floor(Math.random() * Math.floor(max - 50) + 100);
+        }
+        
+        function getRBGA() {
+            return `linear-gradient(135deg, rgba(${getRandomInt(256)},${getRandomInt(256)},${getRandomInt(256)},.5), rgba(${getRandomInt(256)},${getRandomInt(256)},${getRandomInt(256)},.8)`
+        }
+        
+        const elements = document.querySelectorAll('.autobg');
+        
+        Array.from(elements).forEach((element, index) => {
+            element.style.backgroundImage = getRBGA();
+        });
+        
+        // $('.autobg').each(function (index, currentElement) {
+        //     currentElement.style.backgroundImage = getRBGA();
+        // });
+        </script>
+
+        <script>
+            $(window).scroll(function(){
+                console.log('window scroll',$(this).scrollTop());//距離頂部有多遠
+                console.log('window scroll',$(this).scrollLeft());//距離左邊有多遠
+            })
+
+            $(window).resize(function(){
+                console.log('window resize w', $(this).width());//現在視窗的寬多大
+                console.log('window resize h', $(this).height());//現在視窗的高多大
+            })
+        </script>
+</body>
+</html>
