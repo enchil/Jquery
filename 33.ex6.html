@@ -5,12 +5,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
     <title>Document</title>
     <style>
         .wrap {
             width: 700px;
-            height: 480px;
+            height: 464px;
             overflow: hidden;
+            position: relative;
         }
 
         .train {
@@ -20,6 +27,7 @@
             width: 500%;
             transform: translateX(0px);
             transition: .5s;
+            margin: 0;
         }
 
         .train li img {
@@ -29,8 +37,8 @@
 
         .slider-dots {
             position: absolute;
-            bottom: 50px;
-            left: -480px;
+            bottom: 10px;
+            left: 0;
             right: 0;
             padding-left: 0;
             list-style: none;
@@ -48,6 +56,32 @@
         .slider-dots li:nth-child(1) {
             background-color: #fff;
         }
+
+        .page-left-area,
+        .page-right-area {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 10%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: .1s;
+        }
+
+        .page-left-area {
+            left: 0;
+        }
+
+        .page-right-area {
+            right: 0;
+        }
+
+        .page-left-area:hover,
+        .page-right-area:hover {
+            background-color: rgba(212, 199, 199, 0.48);
+        }
     </style>
 </head>
 
@@ -60,42 +94,81 @@
             <li><img src="./imgs/camp5.jpg" alt=""></li>
             <li><img src="./imgs/camp6.jpg" alt=""></li>
         </ul>
+
+        <div class="page-left-area">
+            <button class="btn">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+        </div>
+
+        <div class="page-right-area">
+            <button class="btn">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <ul class="slider-dots">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
     </div>
 
-    <ul class="slider-dots">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
+
 
     <script src="./js/jquery-3.6.1.min.js"></script>
     <script>
         let x = -700;
-        $('.train').click(function () {
-            x = x - 700;
-            if (x <= -3500) {
-                x = 0;
-            }
-            $('.train').css('transform', "translateX(" + x + "px)")
+        let nowPage = 0;
+        // $('.train').click(function () {
+        //     x = x - 700;
+        //     if (x <= -3500) {
+        //         x = 0;
+        //     }
+        //     $('.train').css('transform', "translateX(" + x + "px)")
 
-        })
+        // })
 
         $('.slider-dots li').hover(function () {
-            if ($(this).index()) {
-                let pp = $(this).index();
-                pp = x * pp;
-                $('.train').css('transform', `translateX(${pp}px)`);
-            } else {
-                $('.train').css('transform', "translateX(0px)");
-            }
-            $('.slider-dots li').css('background-color', '#ffffff00');
-            $(this).css('background-color', '#fff');
+            // if ($(this).index()) {
+                let nowPage = $(this).index();
+                pageMovement(nowPage);
+                // nowPage = x * nowPage;
+            //     $('.train').css('transform', `translateX(${nowPage}px)`);
+            // } else {
+            //     $('.train').css('transform', "translateX(0px)");
+            // }
+            // $('.slider-dots li').css('background-color', '#ffffff00');
+            // $(this).css('background-color', '#fff');
 
         })
 
+        
+        $('.page-right-area').click(function () {
+            nowPage++;
+            
+            if (nowPage >= 5) {
+                nowPage = 0;
+            }
+            pageMovement(nowPage);
+        })
 
+        $('.page-left-area').click(function () {
+            nowPage--;
+            
+            if (nowPage < 0) {
+                nowPage = 4;
+            }
+            pageMovement(nowPage);
+        })
+
+        function pageMovement(nowPage){
+            const moveX = nowPage * -700;
+            $('.train').css('transform', `translateX(${moveX}px)`);
+            $('.slider-dots li').eq(nowPage).css('background-color', '#fff').siblings().css('background-color', 'transparent');
+        }
 
     </script>
 </body>

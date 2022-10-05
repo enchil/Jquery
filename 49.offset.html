@@ -1,19 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>offset</title>
     <style>
-        section{
-            height: 300px;
+        body {
+            margin: 0;
+        }
+
+        section {
+            height: 100vh;
+            font-size: 10rem;
+            overflow: hidden;
+        }
+
+        .wrap {
+            display: flex;
+            transform: translateY(200%);
+            opacity: 0;
+            transition: 3s;
+        }
+
+        .wrap.show {
+            transform: translate(0%);
+            opacity: 1;
+        }
+
+        img{
+            width: 200px;
+            height: 200px;
         }
     </style>
 </head>
+
 <body>
     <section class="section1 autobg">section1</section>
-    <section class="section2 autobg">section2</section>
+    <section class="section2 autobg">
+        <div class="wrap ">
+            <div class="img-wrap">
+                <img src="./imgs/camp3.jpg" alt="">
+            </div>
+            <div class="img-wrap">
+                <img src="./imgs/camp4.jpg" alt="">
+            </div>
+            <div class="img-wrap">
+                <img src="./imgs/camp5.jpg" alt="">
+            </div>
+        </div>
+    </section>
     <section class="section3 autobg">section3</section>
     <section class="section4 autobg">section4</section>
     <section class="section5 autobg">section5</section>
@@ -26,30 +63,46 @@
     <section class="section12 autobg">section12</section>
 
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
-        <script>
-         function getRandomInt(max) {
+    <script>
+        function getRandomInt(max) {
             return Math.floor(Math.random() * Math.floor(max - 50) + 100);
         }
-        
+
         function getRBGA() {
             return `linear-gradient(135deg, rgba(${getRandomInt(256)},${getRandomInt(256)},${getRandomInt(256)},.5), rgba(${getRandomInt(256)},${getRandomInt(256)},${getRandomInt(256)},.8)`
         }
-        
+
         const elements = document.querySelectorAll('.autobg');
-        
+
         Array.from(elements).forEach((element, index) => {
             element.style.backgroundImage = getRBGA();
         });
-        
-        // $('.autobg').each(function (index, currentElement) {
-        //     currentElement.style.backgroundImage = getRBGA();
-        // });
-        </script>
-        <script src="./js/jquery-3.6.1.min.js"></script>
-            <script>
-               console.log($('.section2').offset().top);
 
-               $('window').scrollTop()
-            </script>
+    // $('.autobg').each(function (index, currentElement) {
+    //     currentElement.style.backgroundImage = getRBGA();
+    // });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script>
+
+        console.log('section2 offset:', $('.section2').offset().top);
+
+        $(window).scroll(function () {
+            const nowScroll = $(window).scrollTop();
+            console.log('nowScroll', nowScroll);
+            if (nowScroll >= $('.section2').offset().top - $(window).height() / 2) {
+                $('.section2').css('background', 'orange')
+                $('.wrap').addClass('show');
+            }
+            else {
+                $('.section2').css('background', 'pink')
+                $('.wrap').removeClass('show');
+            }
+        })
+    </script>
+
 </body>
+
 </html>
